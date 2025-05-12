@@ -1,0 +1,12 @@
+services:
+  frontend:
+    image: oven/bun:1
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules # чтобы не затирались пакеты
+    ports:
+      - "3000:3000"
+    command: sh -c "bun install && bun run dev"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
